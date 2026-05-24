@@ -24,7 +24,7 @@ public static class Utils
         (Player.Status.FirstOrDefault(s => s.StatusId == VanishStatusId)?.RemainingTime ?? 0) > 0;
 
     public static bool InHoH => Player.Territory.Value.RowId == HoHMapId11 || Player.Territory.Value.RowId == HoHMapId21;
-    public static bool InRubySea => Player.Territory.Value.RowId == RubySeaMapId;
+    public static bool InRubySea => ClientState.IsLoggedIn && Player.Territory.Value.RowId == RubySeaMapId;
 
     public static unsafe bool IsMoving() => AgentMap.Instance()->IsPlayerMoving;
 

@@ -7,7 +7,7 @@
         <Description>帮助获取深层迷宫宝藏的插件 (...为了你)</Description>
         <RepoUrl>https://github.com/Jukkales/HoardFarm</RepoUrl>
         <IconUrl>https://github.com/Jukkales/HoardFarm/raw/main/icon.png</IconUrl>
-        <Version>1.5.2.6</Version>
+        <Version>1.5.2.7</Version>
         <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
         <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
         <OutputPath>../bin</OutputPath>
