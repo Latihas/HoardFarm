@@ -40,6 +40,8 @@ public class PluginService
     public static INotificationManager NotificationManager { get; private set; } = null!;
     [PluginService]
     public static IPluginLog PluginLog { get; private set; } = null!;
+    [PluginService]
+    public static ISeStringEvaluator SeStringEvaluator { get; private set; } = null!;
     public static Configuration Config { get; set; } = null!;
     public static HoardFarmService HoardService { get; set; } = null!;
     public static TaskManager TaskManager { get; set; } = null!;

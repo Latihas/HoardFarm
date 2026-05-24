@@ -1,0 +1,4 @@
+﻿<Solution>
+  <Project Path="AutoRetainerAPI/AutoRetainerAPI/AutoRetainerAPI.csproj"/>
+  <Project Path="HoardFarm/HoardFarm.csproj" />
+</Solution>

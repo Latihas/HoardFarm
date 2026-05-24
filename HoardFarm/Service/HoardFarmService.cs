@@ -5,8 +5,10 @@ using System.Net.Http;
 using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
+using Dalamud.Game.Chat;
 using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Game.Text;
+using Dalamud.Game.Text.Evaluator;
 using Dalamud.Game.Text.SeStringHandling;
 using Dalamud.Plugin.Services;
 using Dalamud.Utility;
@@ -19,16 +21,18 @@ using HoardFarm.Model;
 using HoardFarm.Tasks;
 using HoardFarm.Tasks.TaskGroups;
 using Lumina.Excel.Sheets;
+using Lumina.Text.Expressions;
+using Lumina.Text.ReadOnly;
 using Newtonsoft.Json;
 
 namespace HoardFarm.Service;
 
 public class HoardFarmService : IDisposable
 {
-    private readonly string hoardFoundMessage;
-    private readonly string noHoardMessage;
+    private readonly ReadOnlySeString hoardFoundMessage;
+    private readonly ReadOnlySeString noHoardMessage;
     private readonly Dictionary<uint, MapObject> objectPositions = new();
-    private readonly string senseHoardMessage;
+    private readonly ReadOnlySeString senseHoardMessage;
     private readonly List<uint> visitedObjectIds = [];
     public bool FinishRun;
     private bool hoardAvailable;
@@ -55,15 +59,15 @@ public class HoardFarmService : IDisposable
     public int SessionRuns;
     public int SessionTime;
 
-    private ushort? currentTerritoryType;
+    private uint? currentTerritoryType;
 
     private DateTime? timingStart;
 
     public HoardFarmService()
     {
-        hoardFoundMessage = DataManager.GetExcelSheet<LogMessage>().GetRow(7274).Text.ToDalamudString().GetText();
-        senseHoardMessage = DataManager.GetExcelSheet<LogMessage>().GetRow(7272).Text.ToDalamudString().GetText();
-        noHoardMessage = DataManager.GetExcelSheet<LogMessage>().GetRow(7273).Text.ToDalamudString().GetText();
+        hoardFoundMessage = DataManager.GetExcelSheet<LogMessage>().GetRow(7274).Text;
+        senseHoardMessage = DataManager.GetExcelSheet<LogMessage>().GetRow(7272).Text;
+        noHoardMessage = DataManager.GetExcelSheet<LogMessage>().GetRow(7273).Text;
 
         ClientState.TerritoryChanged += OnMapChange;
 
@@ -427,7 +431,7 @@ public class HoardFarmService : IDisposable
         }
     }
 
-    private void OnMapChange(ushort territoryType)
+    private void OnMapChange(uint territoryType)
     {
         if (territoryType is HoHMapId11 or HoHMapId21)
         {
@@ -437,17 +441,72 @@ public class HoardFarmService : IDisposable
         }
     }
 
-    private void OnChatMessage(
-        XivChatType type, int timestamp, ref SeString sender, ref SeString message, ref bool isHandled)
+    // From Hasel Debug
+    private static SeStringParameter[] GetLocalParameters(ReadOnlySeStringSpan rosss, Dictionary<uint, SeStringParameter>? parameters)
     {
-        if (senseHoardMessage.Equals(message.TextValue))
+        parameters ??= [];
+        ProcessString(rosss);
+        if (parameters.Count > 0)
+        {
+            var last = parameters.OrderBy(x => x.Key).Last();
+            if (parameters.Count != last.Key)
+                for (var i = 1u; i <= last.Key; i++)
+                    if (!parameters.ContainsKey(i))
+                        parameters[i] = new SeStringParameter(0);
+        }
+        return parameters.OrderBy(x => x.Key).Select(x => x.Value).ToArray();
+
+        void ProcessExpression(ReadOnlySeExpressionSpan expression)
+        {
+            while (true)
+            {
+                if (expression.TryGetString(out var exprString))
+                {
+                    ProcessString(exprString);
+                    return;
+                }
+                if (expression.TryGetBinaryExpression(out var expressionType, out var operand1, out var operand2))
+                {
+                    ProcessExpression(operand1);
+                    expression = operand2;
+                    continue;
+                }
+                if (expression.TryGetParameterExpression(out expressionType, out var operand))
+                {
+                    if (!operand.TryGetUInt(out var index)) return;
+                    if (parameters.ContainsKey(index)) return;
+                    if (expressionType == (int)ExpressionType.LocalNumber)
+                        parameters[index] = new SeStringParameter(0);
+                    else if (expressionType == (int)ExpressionType.LocalString)
+                        parameters[index] = new SeStringParameter("");
+                }
+                break;
+            }
+        }
+
+        void ProcessString(ReadOnlySeStringSpan rosss)
+        {
+            foreach (var payload in rosss)
+                foreach (var expression in payload)
+                    ProcessExpression(expression);
+        }
+    }
+
+    public static String EvaluateString(ReadOnlySeString s) =>
+        SeStringEvaluator.Evaluate(s, GetLocalParameters(s.AsSpan(), []), ClientState.ClientLanguage).ToString();
+    
+    
+    private void OnChatMessage(IHandleableChatMessage handleableChatMessage)
+    {
+        var message = handleableChatMessage.Message;
+        if (EvaluateString(senseHoardMessage).Equals(message.TextValue))
         {
             intuitionUsed = true;
             hoardAvailable = true;
             HoardModeStatus = Strings.HoardFarm_Status_HoardFound;
         }
 
-        if (noHoardMessage.Equals(message.TextValue))
+        if (EvaluateString(noHoardMessage).Equals(message.TextValue))
         {
             intuitionUsed = true;
             hoardAvailable = false;
@@ -455,7 +514,7 @@ public class HoardFarmService : IDisposable
             LeaveDuty(Strings.HoardFarm_Status_NoHoard);
         }
 
-        if (hoardFoundMessage.Equals(message.TextValue))
+        if (EvaluateString(hoardFoundMessage).Equals(message.TextValue))
         {
             hoardFound = true;
             movementEnd = DateTime.Now;

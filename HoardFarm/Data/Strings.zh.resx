@@ -11,6 +11,231 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
+    <data name="ConfigWindow_Title" xml:space="preserve">
+        <value>HoardFarm 设置</value>
+    </data>
+    <data name="ConfigWindow_GreetingText" xml:space="preserve">
+        <value>实际上并没有多少设置</value>
+    </data>
+    <data name="ConfigWindow_SupportMe" xml:space="preserve">
+        <value>想支持我? 给我买杯咖啡!</value>
+    </data>
+    <data name="ConfigWindow_SupportKofi" xml:space="preserve">
+        <value>在 Ko-fi 上支持</value>
+    </data>
+    <data name="ConfigWindow_ResetStatistics" xml:space="preserve">
+        <value>重置本地统计</value>
+    </data>
+    <data name="ConfigWindow_OpenHoardfarmOverlay" xml:space="preserve">
+        <value>显示 "打开 Hoardfarm"-悬浮窗</value>
+    </data>
+    <data name="ConfigWindow_SlowMode" xml:space="preserve">
+        <value>慢速模式</value>
+    </data>
+    <data name="ConfigWindow_SlowMode_Help" xml:space="preserve">
+        <value>慢速模式会在再次进本前等待几秒.
+非必须, 但是可以让有些人感觉好些.</value>
+    </data>
+    <data name="DeepDungeonMenuOverlay_OpenHoardfarm" xml:space="preserve">
+        <value>打开 Hoardfarm</value>
+    </data>
+    <data name="MainWindow_Title" xml:space="preserve">
+        <value>HoardFarm {0}</value>
+    </data>
+    <data name="MainWindow_OpenConfig" xml:space="preserve">
+        <value>打开设置</value>
+    </data>
+    <data name="MainWindow_OpenHelp" xml:space="preserve">
+        <value>打开帮助</value>
+    </data>
+    <data name="MainWindow_SupportMe" xml:space="preserve">
+        <value>支持我 ♥</value>
+    </data>
+    <data name="MainWindow_EnableHoardFarmMode" xml:space="preserve">
+        <value>启用 HoardFarm 模式</value>
+    </data>
+    <data name="MainWindow_vnavmeshRequired" xml:space="preserve">
+        <value>该功能需要安装"vnavmesh".</value>
+    </data>
+    <data name="MainWindow_StopAfter" xml:space="preserve">
+        <value>在这之后停止:</value>
+    </data>
+    <data name="MainWindow_StopAfter_Runs" xml:space="preserve">
+        <value>轮数</value>
+    </data>
+    <data name="MainWindow_StopAfter_Hoards" xml:space="preserve">
+        <value>找到宝藏</value>
+    </data>
+    <data name="MainWindow_StopAfter_Minutes" xml:space="preserve">
+        <value>分钟</value>
+    </data>
+    <data name="MainWindow_Savegame" xml:space="preserve">
+        <value>存档:</value>
+    </data>
+    <data name="MainWindow_Savegame_1" xml:space="preserve">
+        <value>存档 1</value>
+    </data>
+    <data name="MainWindow_Savegame_2" xml:space="preserve">
+        <value>存档 2</value>
+    </data>
+    <data name="MainWindow_FarmMode" xml:space="preserve">
+        <value>运行模式:</value>
+    </data>
+    <data name="MainWindow_FarmMode_Efficiency" xml:space="preserve">
+        <value>效率</value>
+    </data>
+    <data name="MainWindow_FarmMode_Efficiency_Help" xml:space="preserve">
+        <value>效率模式会寻找并尝试找到所有宝藏.
+&gt;20% 的宝藏一开始就无法获得.
+这会花费几秒来寻找.
+该模式依然是推荐的.</value>
+    </data>
+    <data name="MainWindow_FarmMode_Safety" xml:space="preserve">
+        <value>安全</value>
+    </data>
+    <data name="MainWindow_FarmMode_Safety_Help" xml:space="preserve">
+        <value>安全模式不会寻找宝藏.
+如果宝藏不可获得会立刻离开. 
+更快更安全，但是你会少掉许多宝藏.
+总的来说会耗时更长.</value>
+    </data>
+    <data name="MainWindow_Statistics" xml:space="preserve">
+        <value>统计:</value>
+    </data>
+    <data name="MainWindow_Statistics_CurrentSession" xml:space="preserve">
+        <value>当前会话</value>
+    </data>
+    <data name="MainWindow_Statistics_Found" xml:space="preserve">
+        <value>找到: {0}   ({1:0.##} %)</value>
+    </data>
+    <data name="MainWindow_Statistics_Runs" xml:space="preserve">
+        <value>轮次: {0}</value>
+    </data>
+    <data name="MainWindow_TimeWithAverage" xml:space="preserve">
+        <value>时长: {0}   (Ø {1})</value>
+    </data>
+    <data name="MainWindow_Time" xml:space="preserve">
+        <value>时长: {0}</value>
+    </data>
+    <data name="MainWindow_Overall" xml:space="preserve">
+        <value>总体:</value>
+    </data>
+    <data name="MainWindow_Progress" xml:space="preserve">
+        <value>进度: {0} / {1}</value>
+    </data>
+    <data name="MainWindow_ProgressZero" xml:space="preserve">
+        <value>操了这得要好几个世纪. 相信我</value>
+    </data>
+    <data name="MainWindow_ProgressNoTime" xml:space="preserve">
+        <value>坐牢中. 无法计算剩余时间.</value>
+    </data>
+    <data name="MainWindow_RemainingTime" xml:space="preserve">
+        <value>你需要至少 {0} 来完成成就.</value>
+    </data>
+    <data name="MainWindow_RemainingTimeDays" xml:space="preserve">
+        <value>你需要至少 {0}天{1} 来完成成就.</value>
+    </data>
+    <data name="MainWindow_UnableToRun" xml:space="preserve">
+        <value>无法运行:</value>
+    </data>
+    <data name="MainWindow_DoRetainers" xml:space="preserve">
+        <value>操作雇员:</value>
+    </data>
+    <data name="MainWindow_DoRetainers_Port" xml:space="preserve">
+        <value>在轮次间传送到利姆萨罗敏萨收取完成的雇员.</value>
+    </data>
+    <data name="MainWindow_DoRetainers_WrongWorld" xml:space="preserve">
+        <value>请检查当前世界名称或背包栏.</value>
+    </data>
+    <data name="MainWindow_DoRetainers_AutoretainerNeeded" xml:space="preserve">
+        <value>该功能需要安装并设置AutoRetainer.</value>
+    </data>
+    <data name="MainWindow_DoRetainers_AnyDone" xml:space="preserve">
+        <value>如果任意雇员完成</value>
+    </data>
+    <data name="MainWindow_DoRetainers_AllDone" xml:space="preserve">
+        <value>如果所有雇员完成</value>
+    </data>
+    <data name="HoardFarm_CommandHelp" xml:space="preserve">
+        <value>打开 Hoard Farm 窗口.
+/hoardfarm config | c → 打开设置窗口.
+/hoardfarm enable | e → 启用 farming 模式.
+/hoardfarm disable | d → 禁用 farming 模式.
+/hoardfarm toggle | t → 切换 farming 模式.
+</value>
+    </data>
+    <data name="HoardFarm_Status_Running" xml:space="preserve">
+        <value>运行中</value>
+    </data>
+    <data name="HoardFarm_Status_Searching" xml:space="preserve">
+        <value>寻找中</value>
+    </data>
+    <data name="HoardFarm_Status_Unreachable" xml:space="preserve">
+        <value>不可获得</value>
+    </data>
+    <data name="HoardFarm_Status_SearchingObject" xml:space="preserve">
+        <value>寻找 {0}</value>
+    </data>
+    <data name="HoardFarm_Status_RetainerRunning" xml:space="preserve">
+        <value>运行雇员中</value>
+    </data>
+    <data name="HoardFarm_Status_WaitingNavmesh" xml:space="preserve">
+        <value>等待 vnavmesh</value>
+    </data>
+    <data name="HoardFarm_Status_Error" xml:space="preserve">
+        <value>错误</value>
+    </data>
+    <data name="HoardFarm_Status_Error_Unprepared" xml:space="preserve">
+        <value>请在开始前准备.
+不支持一层.</value>
+    </data>
+    <data name="HoardFarm_Status_MoveToHoH" xml:space="preserve">
+        <value>移动到天之御柱</value>
+    </data>
+    <data name="HoardFarm_Status_Finished" xml:space="preserve">
+        <value>完成</value>
+    </data>
+    <data name="HoardFarm_Status_EnteringHoH" xml:space="preserve">
+        <value>进入天之御柱</value>
+    </data>
+    <data name="HoardFarm_Status_Error_MinimalSetup" xml:space="preserve">
+        <value>请在开始前准备.
+你需要至少一个 魔陶器：感知宝藏
+和一个 魔陶器：隐形.</value>
+    </data>
+    <data name="HoardFarm_Status_MoveToHoard" xml:space="preserve">
+        <value>移动到宝藏</value>
+    </data>
+    <data name="HoardFarm_Status_Timeout" xml:space="preserve">
+        <value>超时</value>
+    </data>
+    <data name="HoardFarm_Status_PlayerDied" xml:space="preserve">
+        <value>玩家死亡</value>
+    </data>
+    <data name="HoardFarm_Status_Waiting" xml:space="preserve">
+        <value>等待</value>
+    </data>
+    <data name="HoardFarm_Status_HoardFound" xml:space="preserve">
+        <value>找到宝藏</value>
+    </data>
+    <data name="HoardFarm_Status_NoHoard" xml:space="preserve">
+        <value>没有宝藏</value>
+    </data>
+    <data name="HoardFarm_Status_Done" xml:space="preserve">
+        <value>完成</value>
+    </data>
+    <data name="HoardFarm_Status_Leaving" xml:space="preserve">
+        <value>离开</value>
+    </data>
+    <data name="ConfigWindow_WaitBetween" xml:space="preserve">
+        <value>等待:</value>
+    </data>
+    <data name="ConfigWindow_Seconds" xml:space="preserve">
+        <value>%d 秒</value>
+    </data>
+    <data name="ConfigWindow_And" xml:space="preserve">
+        <value>到</value>
+    </data>
     <data name="ConfigWindow_Language" xml:space="preserve">
         <value>语言:</value>
     </data>
@@ -35,7 +260,13 @@
     <data name="ConfigWindow_Language_zh" xml:space="preserve">
         <value>中文</value>
     </data>
-    <data name="MainWindow_Title" xml:space="preserve">
-        <value>HoardFarm {0}</value>
+    <data name="ConfigWindow_DisableStatisticGathering" xml:space="preserve">
+        <value>禁用统计收集</value>
+    </data>
+    <data name="ConfigWindow_DisableStatisticGathering_Help" xml:space="preserve">
+        <value>禁用全球运行次数与找到宝藏的收集.
+纯用来构建准确的全球统计.
+如果发现宝藏，仅发送一轮运行的时间与发现宝藏的时长.
+不会发送角色, 时间戳或任何个人信息!</value>
     </data>
 </root>
